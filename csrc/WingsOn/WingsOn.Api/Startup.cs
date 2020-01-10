@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using WingsOn.Dal;
+using WingsOn.Domain;
+using WingsOn.Domain.Entities;
 
 namespace WingsOn.Api
 {
@@ -25,6 +22,7 @@ namespace WingsOn.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddTransient<IRepository<Person>, PersonRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,7 +32,6 @@ namespace WingsOn.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseRouting();
 
             app.UseAuthorization();
