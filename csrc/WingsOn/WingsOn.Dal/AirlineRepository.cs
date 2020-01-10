@@ -4,9 +4,9 @@ namespace WingsOn.Dal
 {
     public class AirlineRepository : RepositoryBase<Airline>
     {
-        public AirlineRepository() 
+        public AirlineRepository()
         {
-            Repository.AddRange(new []
+            Repository.AddRange(new[]
             {
                 new Airline
                 {

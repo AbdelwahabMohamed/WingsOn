@@ -7,13 +7,13 @@ namespace WingsOn.Dal
 {
     public class FlightRepository : RepositoryBase<Flight>
     {
-        public FlightRepository() 
+        public FlightRepository()
         {
             AirportRepository airports = new AirportRepository();
             AirlineRepository airlines = new AirlineRepository();
             CultureInfo cultureInfo = new CultureInfo("nl-NL");
 
-            Repository.AddRange(new []
+            Repository.AddRange(new[]
             {
                 new Flight
                 {

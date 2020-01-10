@@ -6,7 +6,7 @@ namespace WingsOn.Dal
     {
         public AirportRepository()
         {
-            Repository.AddRange(new []
+            Repository.AddRange(new[]
             {
                 new Airport
                 {

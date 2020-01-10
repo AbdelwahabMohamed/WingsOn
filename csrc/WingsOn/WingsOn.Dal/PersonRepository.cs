@@ -6,11 +6,11 @@ namespace WingsOn.Dal
 {
     public class PersonRepository : RepositoryBase<Person>
     {
-        public PersonRepository() 
+        public PersonRepository()
         {
             CultureInfo cultureInfo = new CultureInfo("nl-NL");
 
-            Repository.AddRange(new []
+            Repository.AddRange(new[]
             {
                 new Person
                 {
@@ -78,38 +78,38 @@ namespace WingsOn.Dal
                 new Person
                 {
                     Id = 64,
-		            Address = "7 Buell Park",
-		            DateBirth = DateTime.Parse("04/10/1951" ,cultureInfo),
-		            Gender = GenderType.Female,
-		            Name = "Melissa Long",
-		            Email = "mlong0@businesswire.com"
+                    Address = "7 Buell Park",
+                    DateBirth = DateTime.Parse("04/10/1951" ,cultureInfo),
+                    Gender = GenderType.Female,
+                    Name = "Melissa Long",
+                    Email = "mlong0@businesswire.com"
                 },
                 new Person
                 {
                     Id = 13,
-		            Address = "45200 Petterle Pass",
-		            DateBirth = DateTime.Parse("15/06/1910", cultureInfo),
-		            Gender = GenderType.Female,
-		            Email = "kmorgan1@lycos.com",
-		            Name = "Kathy Morgan"
+                    Address = "45200 Petterle Pass",
+                    DateBirth = DateTime.Parse("15/06/1910", cultureInfo),
+                    Gender = GenderType.Female,
+                    Email = "kmorgan1@lycos.com",
+                    Name = "Kathy Morgan"
                 },
                 new Person
                 {
                     Id = 40,
-		            Address = "3 Macpherson Junction",
-		            DateBirth = DateTime.Parse("16/11/1977", cultureInfo),
-		            Gender = GenderType.Male,
-		            Email = "brice5@hostgator.com",
-		            Name = "Bonnie Rice"
+                    Address = "3 Macpherson Junction",
+                    DateBirth = DateTime.Parse("16/11/1977", cultureInfo),
+                    Gender = GenderType.Male,
+                    Email = "brice5@hostgator.com",
+                    Name = "Bonnie Rice"
                 },
                 new Person
                 {
                     Id = 18,
-		            Address = "2258 Sloan Avenue",
-		            DateBirth = DateTime.Parse("04/12/1962", cultureInfo),
-		            Gender = GenderType.Female,
-		            Email = "lharper6@adobe.com",
-		            Name = "Louise Harper"
+                    Address = "2258 Sloan Avenue",
+                    DateBirth = DateTime.Parse("04/12/1962", cultureInfo),
+                    Gender = GenderType.Female,
+                    Email = "lharper6@adobe.com",
+                    Name = "Louise Harper"
                 }
             });
         }
