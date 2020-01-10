@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WingsOn.Domain
+namespace WingsOn.Domain.Entities
 {
     public class Person : DomainObject
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using WingsOn.Domain;
+using WingsOn.Domain.Entities;
 
 namespace WingsOn.Dal
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WingsOn.Domain
+namespace WingsOn.Domain.Entities
 {
     public class Booking : DomainObject
     {

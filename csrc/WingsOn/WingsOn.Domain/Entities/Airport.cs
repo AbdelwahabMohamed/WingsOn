@@ -1,4 +1,4 @@
-﻿namespace WingsOn.Domain
+﻿namespace WingsOn.Domain.Entities
 {
     public class Airport : DomainObject
     {
