@@ -28,5 +28,17 @@ namespace WingsOn.Api.Models
                 Email = person.Email
             };
         }
+        public  Person ToPerson()
+        {
+            return new Person
+            {
+                Id = Id,
+                Name = Name,
+                DateBirth = DateBirth,
+                Gender = (Domain.Entities.GenderType) Gender,
+                Address = Address,
+                Email = Email
+            };
+        }
     }
 }
