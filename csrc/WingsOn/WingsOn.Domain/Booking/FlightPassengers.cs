@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WingsOn.Domain.Entities
+namespace WingsOn.Domain.Booking
 {
     public class FlightPassengers
     {

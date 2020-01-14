@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using WingsOn.Domain.Entities;
+using WingsOn.Domain;
+using WingsOn.Domain.Booking;
 
 namespace WingsOn.Dal
 {
-    public class PersonRepository : RepositoryBase<Person>
+    public class PersonRepository : RepositoryBase<Person>, IPeopleRepository
     {
         public PersonRepository()
         {
@@ -114,6 +115,11 @@ namespace WingsOn.Dal
                     Name = "Louise Harper"
                 }
             });
+        }
+
+        public IEnumerable<Person> GetPassengersByGender(GenderType gender)
+        {
+            return Repository.Where(p => p.Gender == gender);
         }
     }
 }

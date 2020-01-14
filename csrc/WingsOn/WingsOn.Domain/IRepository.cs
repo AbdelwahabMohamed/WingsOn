@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using WingsOn.Domain.Entities;
 
 namespace WingsOn.Domain
 {

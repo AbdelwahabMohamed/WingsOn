@@ -1,5 +1,5 @@
 ﻿using System;
-using WingsOn.Domain.Entities;
+using WingsOn.Domain.Booking;
 
 namespace WingsOn.Api.Models
 {
@@ -35,7 +35,7 @@ namespace WingsOn.Api.Models
                 Id = Id,
                 Name = Name,
                 DateBirth = DateBirth,
-                Gender = (Domain.Entities.GenderType) Gender,
+                Gender = (Domain.Booking.GenderType) Gender,
                 Address = Address,
                 Email = Email
             };

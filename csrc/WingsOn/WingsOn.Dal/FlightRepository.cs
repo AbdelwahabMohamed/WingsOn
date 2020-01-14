@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using WingsOn.Domain.Entities;
+using WingsOn.Domain.Booking;
 
 namespace WingsOn.Dal
 {
@@ -83,5 +83,7 @@ namespace WingsOn.Dal
                 }
             });
         }
+
+        
     }
 }

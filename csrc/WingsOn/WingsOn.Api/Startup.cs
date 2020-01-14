@@ -5,8 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WingsOn.Dal;
 using WingsOn.Domain;
-using WingsOn.Domain.Entities;
-using WingsOn.Domain.Services;
 
 namespace WingsOn.Api
 {
@@ -23,9 +21,8 @@ namespace WingsOn.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddTransient<IRepository<Person>, PersonRepository>();
-            services.AddTransient<IRepository<Booking>, BookingRepository>();
-            services.AddTransient<IFlightPassengersService, FlightPassengersService>();
+            services.AddTransient<IPeopleRepository, PersonRepository>();
+            services.AddTransient<IBookingRepository, BookingRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WingsOn.Domain.Entities
+namespace WingsOn.Domain.Booking
 {
     public class Booking : DomainObject
     {
@@ -14,5 +14,7 @@ namespace WingsOn.Domain.Entities
         public IEnumerable<Person> Passengers { get; set; }
 
         public DateTime DateBooking { get; set; }
+
+     
     }
 }

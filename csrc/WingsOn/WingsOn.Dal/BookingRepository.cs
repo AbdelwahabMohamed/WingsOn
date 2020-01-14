@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using WingsOn.Domain.Entities;
+using WingsOn.Domain;
+using WingsOn.Domain.Booking;
 
 namespace WingsOn.Dal
 {
-    public class BookingRepository : RepositoryBase<Booking>
+    public class BookingRepository : RepositoryBase<Booking>, IBookingRepository
     {
         public BookingRepository()
         {
@@ -69,5 +71,15 @@ namespace WingsOn.Dal
                 }
             });
         }
+
+        public IEnumerable<Person> GetPassengersForFlight(string flightNumber)
+        {
+
+            var passengers = Repository.Where(b => b.Flight.Number == flightNumber)
+                   .SelectMany(f => f.Passengers);
+            return passengers;
+        }
     }
+
+
 }

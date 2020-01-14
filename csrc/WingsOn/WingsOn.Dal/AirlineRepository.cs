@@ -1,4 +1,4 @@
-﻿using WingsOn.Domain.Entities;
+﻿using WingsOn.Domain.Booking;
 
 namespace WingsOn.Dal
 {

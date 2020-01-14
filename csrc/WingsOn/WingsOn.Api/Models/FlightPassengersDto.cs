@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WingsOn.Domain.Entities;
+using WingsOn.Domain.Booking;
 
 namespace WingsOn.Api.Models
 {
@@ -34,7 +34,7 @@ namespace WingsOn.Api.Models
                 {
                     Id = p.Id,
                     Name = p.Name,
-                    Gender = (Domain.Entities.GenderType)(int)p.Gender,
+                    Gender = (Domain.Booking.GenderType)(int)p.Gender,
                     Email = p.Email,
                     Address = p.Address,
                     DateBirth = p.DateBirth
