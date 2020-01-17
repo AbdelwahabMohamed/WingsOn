@@ -2,7 +2,7 @@
 using WingsOn.Api;
 using Xunit;
 
-namespace WingsOn.Tests
+namespace WingsOn.Tests.Fixtures
 {
     [CollectionDefinition("Application collection")]
     public class ApplicationCollection : ICollectionFixture<WebApplicationFactory<Startup>>

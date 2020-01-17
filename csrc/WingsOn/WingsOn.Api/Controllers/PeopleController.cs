@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WingsOn.Api.Models;
+using WingsOn.Domain.Booking;
 using WingsOn.Domain.Contracts;
 using GenderType = WingsOn.Domain.Booking.GenderType;
 
@@ -10,10 +12,12 @@ namespace WingsOn.Api.Controllers
     public class PeopleController : Controller
     {
         private readonly IPeopleRepository _peopleRepository;
+        private readonly IMapper _mapper;
 
-        public PeopleController(IPeopleRepository peopleRepository)
+        public PeopleController(IPeopleRepository peopleRepository, IMapper mapper)
         {
             _peopleRepository = peopleRepository;
+            _mapper = mapper;
         }
 
         // GET api/<controller>/5
@@ -21,14 +25,14 @@ namespace WingsOn.Api.Controllers
         public IActionResult Get(int id)
         {
             var person = _peopleRepository.Get(id);
-            return Ok(PersonDto.FromPerson(person));
+            return Ok(_mapper.Map<PersonDto>(person));
         }
 
         // PUT api/<controller>/5
         [HttpPut]
         public IActionResult Put([FromBody] PersonDto person)
         {
-            var updatedPerson = _peopleRepository.Save(person.ToPerson());
+            var updatedPerson = _peopleRepository.Save(_mapper.Map<Person>(person));
             return Ok(updatedPerson);
         }
 
@@ -38,7 +42,7 @@ namespace WingsOn.Api.Controllers
         {
             //Pagination!
             var passengersByGender = _peopleRepository.GetPassengersByGender((GenderType)(int)gender);
-            return Ok(passengersByGender.Select(PersonDto.FromPerson));
+            return Ok(_mapper.Map<IEnumerable<PersonDto>>(passengersByGender));
         }
 
     }

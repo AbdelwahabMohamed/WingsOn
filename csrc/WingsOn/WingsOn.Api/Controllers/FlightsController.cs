@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WingsOn.Api.Models;
 using WingsOn.Domain.Contracts;
@@ -9,10 +10,12 @@ namespace WingsOn.Api.Controllers
     public class FlightsController : Controller
     {
         private readonly IBookingRepository _bookingRepository;
+        private readonly IMapper _mapper;
 
-        public FlightsController(IBookingRepository bookingRepository)
+        public FlightsController(IBookingRepository bookingRepository, IMapper mapper)
         {
             _bookingRepository = bookingRepository;
+            _mapper = mapper;
         }
 
         // GET api/<controller>/PZ696/passengers
@@ -20,8 +23,7 @@ namespace WingsOn.Api.Controllers
         public IActionResult Get(string flightNumber)
         {
             var passengersForFlight = _bookingRepository.GetPassengersForFlight(flightNumber);
-            var passengersDto = passengersForFlight.Select(PersonDto.FromPerson);
-            return Ok(passengersDto);
+            return Ok(_mapper.Map<IEnumerable<PersonDto>>(passengersForFlight));
         }
 
     }

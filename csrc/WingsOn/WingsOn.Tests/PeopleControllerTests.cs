@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,13 +26,13 @@ namespace WingsOn.Tests
             // arrange
 
             // act
-            var httpResponse = await _client.GetAsync("/api/people/5");
+            var httpResponse = await _client.GetAsync("/api/people/69");
 
             // assert
             httpResponse.EnsureSuccessStatusCode();
             var stringResponse = await httpResponse.Content.ReadAsStringAsync();
             var person = JsonConvert.DeserializeObject<PersonDto>(stringResponse);
-            Assert.True(person.Id == 5);
+            Assert.True(person.Id == 69);
         }
 
         [Fact]

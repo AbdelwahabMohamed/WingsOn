@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using WingsOn.Api.Models;
+using WingsOn.Domain.Booking;
 using WingsOn.Domain.Contracts;
 
 namespace WingsOn.Api.Controllers
@@ -8,18 +10,21 @@ namespace WingsOn.Api.Controllers
     public class BookingsController : Controller
     {
         private readonly IBookingRepository _bookingRepository;
+        private readonly IMapper _mapper;
 
-        public BookingsController(IBookingRepository bookingRepository)
+        public BookingsController(IBookingRepository bookingRepository, IMapper mapper)
         {
             _bookingRepository = bookingRepository;
+            _mapper = mapper;
         }
 
         // POST api/<controller>/
         [HttpPost]
         public IActionResult Post([FromBody]BookingDto booking)
         {
-            var saved = _bookingRepository.Save(booking.ToBooking());
-            return Ok(BookingDto.FromBooking(saved));
+            var x = _mapper.Map<Booking>(booking);
+            var savedBooking = _bookingRepository.Save(x);
+            return Ok(_mapper.Map<BookingDto>(savedBooking));
         }
     }
 }
