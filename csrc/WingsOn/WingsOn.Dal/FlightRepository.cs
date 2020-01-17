@@ -2,10 +2,11 @@
 using System.Globalization;
 using System.Linq;
 using WingsOn.Domain.Booking;
+using WingsOn.Domain.Contracts;
 
 namespace WingsOn.Dal
 {
-    public class FlightRepository : RepositoryBase<Flight>
+    public class FlightRepository : RepositoryBase<Flight>, IFlightRepository
     {
         public FlightRepository()
         {
@@ -84,6 +85,10 @@ namespace WingsOn.Dal
             });
         }
 
-        
+
+        public bool FlightExists(string number)
+        {
+            return Repository.Any(f => f.Number == number);
+        }
     }
 }

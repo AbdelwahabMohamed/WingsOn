@@ -3,7 +3,6 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WingsOn.Api.Models;
-using WingsOn.Domain.Booking;
 using WingsOn.Domain.Contracts;
 
 namespace WingsOn.Api.Controllers
@@ -12,10 +11,10 @@ namespace WingsOn.Api.Controllers
     public class FlightsController : Controller
     {
         private readonly IBookingService _bookingService;
-        private readonly IRepository<Flight> _flightRepository;
+        private readonly IFlightRepository _flightRepository;
         private readonly IMapper _mapper;
 
-        public FlightsController(IBookingService bookingService, IMapper mapper, IRepository<Flight> flightRepository)
+        public FlightsController(IBookingService bookingService, IMapper mapper, IFlightRepository flightRepository)
         {
             _bookingService = bookingService;
             _mapper = mapper;

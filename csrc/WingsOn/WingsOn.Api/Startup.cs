@@ -28,7 +28,7 @@ namespace WingsOn.Api
 
 
             services.AddTransient<IRepository<Booking>, BookingRepository>();
-            services.AddTransient<IRepository<Flight>, FlightRepository>();
+            services.AddTransient<IFlightRepository, FlightRepository>();
             services.AddTransient<IPeopleRepository, PersonRepository>();
             services.AddTransient<IBookingService, BookingService>();
         }

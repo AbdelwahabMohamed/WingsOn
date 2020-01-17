@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using WingsOn.Domain.Contracts;
 
 namespace WingsOn.Domain.Booking
@@ -10,9 +9,9 @@ namespace WingsOn.Domain.Booking
     {
         private readonly IRepository<Booking> _bookingRepository;
         private readonly IPeopleRepository _peopleRepository;
-        private readonly IRepository<Flight> _flightRepository;
+        private readonly IFlightRepository _flightRepository;
 
-        public BookingService(IRepository<Booking> bookingRepository, IPeopleRepository peopleRepository, IRepository<Flight> flightRepository)
+        public BookingService(IRepository<Booking> bookingRepository, IPeopleRepository peopleRepository, IFlightRepository flightRepository)
         {
             _bookingRepository = bookingRepository;
             _peopleRepository = peopleRepository;
@@ -27,10 +26,6 @@ namespace WingsOn.Domain.Booking
             return passengers;
         }
 
-        public bool FlightExists(string flightNumber)
-        {
-            return _flightRepository.GetAll().Any(f => f.Number == flightNumber);
-        }
 
         public Booking CreateBookingForNewPassengerForExistingFlight(string flightNumber, Person passenger)
         {
