@@ -18,7 +18,6 @@ namespace WingsOn.Api.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]BookingDto booking)
         {
-            
             var saved = _bookingRepository.Save(booking.ToBooking());
             return Ok(BookingDto.FromBooking(saved));
         }
