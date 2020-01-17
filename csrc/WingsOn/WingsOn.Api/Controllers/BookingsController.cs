@@ -22,7 +22,7 @@ namespace WingsOn.Api.Controllers
             _bookingService = bookingService;
             _flightRepository = flightRepository;
         }
-        // GET api/<controller>/{nuber}
+        // GET api/<controller>/{number}
         [HttpGet("{number}", Name = "GetBooking")]
         public IActionResult Get(string number)
         {

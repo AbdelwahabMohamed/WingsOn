@@ -40,7 +40,7 @@ namespace WingsOn.Api.Controllers
         [HttpGet]
         public IActionResult Get(Models.GenderType gender)
         {
-            //Pagination!
+            //TODO: implement pagination!
             var passengersByGender = _peopleRepository.GetPassengersByGender((GenderType)(int)gender);
             return Ok(_mapper.Map<IEnumerable<PersonDto>>(passengersByGender));
         }
