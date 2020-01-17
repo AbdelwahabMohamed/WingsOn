@@ -21,5 +21,16 @@ namespace WingsOn.Api.Models
                 Country = Country
             };
         }
+
+        public static AirportDto FromAirport(Airport airport)
+        {
+            return new AirportDto
+            {
+                Id = airport.Id,
+                City = airport.City,
+                Code = airport.Code,
+                Country = airport.Country
+            };
+        }
     }
 }

@@ -21,5 +21,16 @@ namespace WingsOn.Api.Models
                 Name = Name
             };
         }
+
+        public static AirlineDto FromAirLine(Airline airline)
+        {
+            return new AirlineDto
+            {
+                Id = airline.Id,
+                Address = airline.Address,
+                Code = airline.Code,
+                Name = airline.Name
+            };
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WingsOn.Domain
+namespace WingsOn.Domain.Contracts
 {
     public interface IRepository<T> where T : DomainObject
     {
@@ -8,6 +8,6 @@ namespace WingsOn.Domain
 
         T Get(int id);
 
-        void Save(T element);
+        T Save(T element);
     }
 }

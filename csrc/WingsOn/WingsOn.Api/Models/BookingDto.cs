@@ -18,7 +18,20 @@ namespace WingsOn.Api.Models
 
         public DateTime DateBooking { get; set; }
 
-        public  Booking ToBooking()
+        public static BookingDto FromBooking(Booking booking)
+        {
+            return new BookingDto
+            {
+                Id = booking.Id,
+                Customer = PersonDto.FromPerson(booking.Customer),
+                DateBooking = booking.DateBooking,
+                Flight = FlightDto.FromFlight(booking.Flight),
+                Number = booking.Number, 
+                Passengers = booking.Passengers.Select(PersonDto.FromPerson)
+            };
+        }
+
+        public Booking ToBooking()
         {
             return new Booking
             {
@@ -27,7 +40,7 @@ namespace WingsOn.Api.Models
                 Flight = Flight.ToFlight(),
                 Customer = Customer.ToPerson(),
                 DateBooking = DateBooking,
-                Passengers = Passengers.Select(s=>s.ToPerson())
+                Passengers = Passengers.Select(s => s.ToPerson())
             };
         }
     }

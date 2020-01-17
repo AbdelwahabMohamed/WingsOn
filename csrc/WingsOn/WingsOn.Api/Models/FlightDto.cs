@@ -34,5 +34,20 @@ namespace WingsOn.Api.Models
                 Price = Price
             };
         }
+
+        public static FlightDto FromFlight(Flight flight)
+        {
+            return new FlightDto
+            {
+                Id = flight.Id,
+                ArrivalAirport = AirportDto.FromAirport(flight.ArrivalAirport),
+                ArrivalDate = flight.ArrivalDate,
+                Carrier = AirlineDto.FromAirLine(flight.Carrier),
+                DepartureAirport = AirportDto.FromAirport(flight.DepartureAirport),
+                DepartureDate = flight.DepartureDate,
+                Number = flight.Number,
+                Price = flight.Price
+            };
+        }
     }
 }

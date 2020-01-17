@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WingsOn.Api.Models;
-using WingsOn.Domain;
-using WingsOn.Domain.Booking;
+using WingsOn.Domain.Contracts;
 
 namespace WingsOn.Api.Controllers
 {
@@ -15,11 +14,13 @@ namespace WingsOn.Api.Controllers
             _bookingRepository = bookingRepository;
         }
 
+        // POST api/<controller>/
         [HttpPost]
-        public IActionResult Post(BookingDto booking)
+        public IActionResult Post([FromBody]BookingDto booking)
         {
-            _bookingRepository.Save(booking.ToBooking());
-            return Ok();
+            
+            var saved = _bookingRepository.Save(booking.ToBooking());
+            return Ok(BookingDto.FromBooking(saved));
         }
     }
 }

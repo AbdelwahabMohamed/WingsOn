@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WingsOn.Dal;
-using WingsOn.Domain;
+using WingsOn.Domain.Contracts;
 
 namespace WingsOn.Api
 {

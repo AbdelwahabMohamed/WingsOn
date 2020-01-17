@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WingsOn.Dal", "WingsOn.Dal\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingsOn.Api", "WingsOn.Api\WingsOn.Api.csproj", "{71DCF56E-DB1D-42AE-8787-7D1E8DD641CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingsOn.Tests", "WingsOn.Tests\WingsOn.Tests.csproj", "{AFC30870-2337-4365-AE4C-AA8538B11169}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{71DCF56E-DB1D-42AE-8787-7D1E8DD641CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71DCF56E-DB1D-42AE-8787-7D1E8DD641CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71DCF56E-DB1D-42AE-8787-7D1E8DD641CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFC30870-2337-4365-AE4C-AA8538B11169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC30870-2337-4365-AE4C-AA8538B11169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC30870-2337-4365-AE4C-AA8538B11169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC30870-2337-4365-AE4C-AA8538B11169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

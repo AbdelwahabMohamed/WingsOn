@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using WingsOn.Api.Models;
-using WingsOn.Domain;
+using WingsOn.Domain.Contracts;
 
 namespace WingsOn.Api.Controllers
 {
@@ -20,7 +20,8 @@ namespace WingsOn.Api.Controllers
         public IActionResult Get(string flightNumber)
         {
             var passengersForFlight = _bookingRepository.GetPassengersForFlight(flightNumber);
-            return Ok(passengersForFlight.Select(PersonDto.FromPerson));
+            var passengersDto = passengersForFlight.Select(PersonDto.FromPerson);
+            return Ok(passengersDto);
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using WingsOn.Api.Models;
-using WingsOn.Domain;
+using WingsOn.Domain.Contracts;
 using GenderType = WingsOn.Domain.Booking.GenderType;
 
 namespace WingsOn.Api.Controllers

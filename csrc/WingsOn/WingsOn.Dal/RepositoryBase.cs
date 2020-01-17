@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using WingsOn.Domain;
+using WingsOn.Domain.Contracts;
 
 namespace WingsOn.Dal
 {
@@ -23,11 +24,11 @@ namespace WingsOn.Dal
             return GetAll().SingleOrDefault(a => a.Id == id);
         }
 
-        public void Save(T element)
+        public T Save(T element)
         {
             if (element == null)
             {
-                return;
+                return null;
             }
 
             T existing = Get(element.Id);
@@ -37,6 +38,7 @@ namespace WingsOn.Dal
             }
 
             Repository.Add(element);
+            return element;
         }
     }
 }
