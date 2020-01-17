@@ -7,7 +7,7 @@ namespace WingsOn.Domain.Contracts
     {
         IEnumerable<Person> GetPassengersForFlight(string flightNumber);
         bool FlightExists(string flightNumber);
-        Booking.Booking CreatePassengerForFlight(string flightNumber, Person passenger);
+        Booking.Booking CreateBookingForNewPassengerForExistingFlight(string flightNumber, Person passenger);
     }
 
 }

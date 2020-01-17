@@ -38,21 +38,21 @@ namespace WingsOn.Api.Controllers
             return Ok(_mapper.Map<IEnumerable<PersonDto>>(passengersForFlight));
         }
 
-        // POST api/flights/{flightNumber}/passengers
-        [HttpPost("{flightNumber}/passengers")]
-        public IActionResult Post(string flightNumber, PersonDto passenger)
-        {
-            if (!_bookingService.FlightExists(flightNumber))
-            {
-                return NotFound(flightNumber);
-            }
+        //// POST api/flights/{flightNumber}/passengers
+        //[HttpPost("{flightNumber}/passengers")]
+        //public IActionResult Post(string flightNumber, PersonDto passenger)
+        //{
+        //    if (!_bookingService.FlightExists(flightNumber))
+        //    {
+        //        return NotFound(flightNumber);
+        //    }
 
-            var savedBooking = _bookingService.CreatePassengerForFlight(flightNumber,_mapper.Map<Person>(passenger));
-            return CreatedAtRoute(
-                "GetBooking",
-                new { Number = savedBooking.Number },
-                _mapper.Map<BookingDto>(savedBooking));
-        }
+        //    var savedBooking = _bookingService.CreatePassengerForFlight(flightNumber,_mapper.Map<Person>(passenger));
+        //    return CreatedAtRoute(
+        //        "GetBooking",
+        //        new { Number = savedBooking.Number },
+        //        _mapper.Map<BookingDto>(savedBooking));
+        //}
 
     }
 }

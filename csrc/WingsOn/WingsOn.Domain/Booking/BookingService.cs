@@ -32,7 +32,7 @@ namespace WingsOn.Domain.Booking
             return _flightRepository.GetAll().Any(f => f.Number == flightNumber);
         }
 
-        public Booking CreatePassengerForFlight(string flightNumber, Person passenger)
+        public Booking CreateBookingForNewPassengerForExistingFlight(string flightNumber, Person passenger)
         {
             var flight = _flightRepository.GetAll().First(f => f.Number == flightNumber);
             var savedPassenger = _peopleRepository.Save(passenger);
@@ -43,6 +43,7 @@ namespace WingsOn.Domain.Booking
                 Number = Guid.NewGuid().ToString(),
                 Customer = savedPassenger
             };
+            _bookingRepository.Save(booking);
             return booking;
         }
     }

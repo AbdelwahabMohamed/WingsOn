@@ -34,5 +34,29 @@ namespace WingsOn.Tests
             var booking = JsonConvert.DeserializeObject<BookingDto>(stringResponse);
             Assert.True(booking.Number== "WO-291470");
         }
+
+        //POST api/bookings/flights/{flightNumber}/passengers
+        [Fact]
+        public async Task CanPostBookingForNewPassngerForExistingFlight()
+        {
+            // arrange
+            var flightHttpResponseMessage = await _client.GetAsync("/api/flights/PZ696");
+            var flightResponse = await flightHttpResponseMessage.Content.ReadAsStringAsync();
+            var flight = JsonConvert.DeserializeObject<FlightDto>(flightResponse);
+            var passenger = new Fixture().Create<PersonDto>();
+
+            var passengerToCreatePayload = new StringContent(JsonConvert.SerializeObject(passenger), Encoding.UTF8, "application/json");
+
+            // act
+            var httpResponse = await _client.PostAsync($"/api/bookings/flights/{flight.Number}/passengers", passengerToCreatePayload);
+            // Must be successful.
+            httpResponse.EnsureSuccessStatusCode();
+
+            // assert
+            var stringResponse = await httpResponse.Content.ReadAsStringAsync();
+            var booking = JsonConvert.DeserializeObject<BookingDto>(stringResponse);
+            Assert.True(booking != null);
+
+        }
     }
 }
