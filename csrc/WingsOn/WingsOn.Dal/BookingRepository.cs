@@ -7,8 +7,9 @@ using WingsOn.Domain.Contracts;
 
 namespace WingsOn.Dal
 {
-    public class BookingRepository : RepositoryBase<Booking>, IBookingRepository
+    public class BookingRepository : RepositoryBase<Booking>
     {
+
         public BookingRepository()
         {
             PersonRepository persons = new PersonRepository();
@@ -70,14 +71,6 @@ namespace WingsOn.Dal
                     }
                 }
             });
-        }
-
-        public IEnumerable<Person> GetPassengersForFlight(string flightNumber)
-        {
-
-            var passengers = Repository.Where(b => b.Flight.Number == flightNumber)
-                   .SelectMany(f => f.Passengers);
-            return passengers;
         }
     }
 

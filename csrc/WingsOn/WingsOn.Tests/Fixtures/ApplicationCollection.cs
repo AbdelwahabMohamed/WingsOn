@@ -11,4 +11,5 @@ namespace WingsOn.Tests.Fixtures
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+    //TODO: Create in memory data store, add seed and teardown for tests
 }

@@ -21,21 +21,18 @@ namespace WingsOn.Tests
         }
 
         [Fact]
-        public async Task CanPostBooking()
+        public async Task CanGetBooking()
         {
             //arrange
-            var newBooking = new Fixture().Create<BookingDto>();
-            var bookingPayload = new StringContent(JsonConvert.SerializeObject(newBooking), Encoding.UTF8, "application/json");
-
             // act
-            var httpResponse = await _client.PostAsync("/api/Bookings/", bookingPayload);
+            var httpResponse = await _client.GetAsync("/api/Bookings/WO-291470");
             // Must be successful.
             httpResponse.EnsureSuccessStatusCode();
 
             // assert
             var stringResponse = await httpResponse.Content.ReadAsStringAsync();
             var booking = JsonConvert.DeserializeObject<BookingDto>(stringResponse);
-            Assert.True(booking != null);
+            Assert.True(booking.Number== "WO-291470");
         }
     }
 }

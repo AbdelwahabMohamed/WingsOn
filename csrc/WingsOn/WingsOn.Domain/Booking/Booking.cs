@@ -14,7 +14,5 @@ namespace WingsOn.Domain.Booking
         public IEnumerable<Person> Passengers { get; set; }
 
         public DateTime DateBooking { get; set; }
-
-     
     }
 }
