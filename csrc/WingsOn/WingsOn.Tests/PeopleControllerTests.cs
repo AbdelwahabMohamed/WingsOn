@@ -3,6 +3,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using AutoFixture;
+using AutoMapper.Configuration.Annotations;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.JsonPatch.Operations;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using WingsOn.Api;
@@ -49,25 +52,22 @@ namespace WingsOn.Tests
             var peopleByGender = JsonConvert.DeserializeObject<IEnumerable<PersonDto>>(stringResponse);
             Assert.All(peopleByGender, p => Assert.True(p.Gender == gender));
         }
-        [Fact]
-        public async Task CanPutPerson()
+
+        [Fact(Skip = "Batch not being read yet")]
+        public async Task CanPatchPerson()
         {
             // arrange
-            var personHttpResponseMessage = await _client.GetAsync("/api/people/69");
-            var personResponse = await personHttpResponseMessage.Content.ReadAsStringAsync();
-            var personToUpdate = JsonConvert.DeserializeObject<PersonDto>(personResponse);
-            var newEmail = new Fixture().Create<string>();
-            personToUpdate.Email = newEmail;
-            var personToUpdatePayload = new StringContent(JsonConvert.SerializeObject(personToUpdate), Encoding.UTF8, "application/json");
+            var content = new JsonPatchDocument<PersonToUpdateDto>();
+            content.Add(dto => dto.Email, "newEmail@acme.com");
+
+            var personToUpdatePayload = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json-patch+json");
 
             // act
-            var httpResponse = await _client.PutAsync($"/api/people/", personToUpdatePayload);
+            var httpResponse = await _client.PatchAsync($"/api/people/69", personToUpdatePayload);
 
             // assert
             httpResponse.EnsureSuccessStatusCode();
-            var stringResponse = await httpResponse.Content.ReadAsStringAsync();
-            var peopleByGender = JsonConvert.DeserializeObject<PersonDto>(stringResponse);
-            Assert.True(personToUpdate.Email == newEmail);
+
         }
 
 

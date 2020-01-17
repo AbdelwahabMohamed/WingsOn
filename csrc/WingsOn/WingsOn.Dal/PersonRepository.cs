@@ -121,5 +121,12 @@ namespace WingsOn.Dal
         {
             return Repository.Where(p => p.Gender == gender);
         }
+
+        public Person UpdateEmail(int id, string email)
+        {
+            var person = Get(id);
+            person.Email = email;
+            return Save(person);
+        }
     }
 }

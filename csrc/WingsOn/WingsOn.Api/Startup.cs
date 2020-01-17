@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 using WingsOn.Dal;
 using WingsOn.Domain.Booking;
 using WingsOn.Domain.Contracts;
@@ -23,7 +24,12 @@ namespace WingsOn.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(setup =>
+                {
+                    setup.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                });
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 

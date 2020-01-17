@@ -24,7 +24,7 @@ namespace WingsOn.Api.Controllers
         }
         // GET api/<controller>/{number}
         [HttpGet("{number}", Name = "GetBooking")]
-        public IActionResult Get(string number)
+        public ActionResult<BookingDto> Get(string number)
         {
             var booking = _bookingRepository.GetAll().First(b => b.Number == number);
             return Ok(_mapper.Map<BookingDto>(booking));
@@ -32,7 +32,7 @@ namespace WingsOn.Api.Controllers
 
         //POST api/bookings/flights/{flightNumber}/passengers
         [HttpPost("flights/{flightNumber}/passengers")]
-        public IActionResult Post(string flightNumber, PersonDto passenger)
+        public ActionResult<BookingDto> Post(string flightNumber, PersonDto passenger)
         {
             if (!_flightRepository.FlightExists(flightNumber))
             {

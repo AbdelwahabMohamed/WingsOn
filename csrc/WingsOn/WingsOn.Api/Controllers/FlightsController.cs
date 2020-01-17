@@ -23,7 +23,7 @@ namespace WingsOn.Api.Controllers
 
         // GET api/<controller>/PZ696
         [HttpGet("{flightNumber}")]
-        public IActionResult Get(string flightNumber)
+        public ActionResult<FlightDto> Get(string flightNumber)
         {
             var flight = _flightRepository.GetAll().FirstOrDefault(f=>f.Number == flightNumber);
             return Ok(_mapper.Map<FlightDto>(flight));
@@ -31,27 +31,10 @@ namespace WingsOn.Api.Controllers
 
         // GET api/<controller>/PZ696/passengers
         [HttpGet("{flightNumber}/passengers")]
-        public IActionResult GetPassengers(string flightNumber)
+        public ActionResult<IEnumerable<PersonDto>> GetPassengers(string flightNumber)
         {
             var passengersForFlight = _bookingService.GetPassengersForFlight(flightNumber);
             return Ok(_mapper.Map<IEnumerable<PersonDto>>(passengersForFlight));
         }
-
-        //// POST api/flights/{flightNumber}/passengers
-        //[HttpPost("{flightNumber}/passengers")]
-        //public IActionResult Post(string flightNumber, PersonDto passenger)
-        //{
-        //    if (!_bookingService.FlightExists(flightNumber))
-        //    {
-        //        return NotFound(flightNumber);
-        //    }
-
-        //    var savedBooking = _bookingService.CreatePassengerForFlight(flightNumber,_mapper.Map<Person>(passenger));
-        //    return CreatedAtRoute(
-        //        "GetBooking",
-        //        new { Number = savedBooking.Number },
-        //        _mapper.Map<BookingDto>(savedBooking));
-        //}
-
     }
 }

@@ -12,6 +12,7 @@ namespace WingsOn.Api
             CreateMap<Booking, BookingDto>().ReverseMap();
             CreateMap<Flight, FlightDto>().ReverseMap();
             CreateMap<Person, PersonDto>().ReverseMap();
+            CreateMap<Person, PersonToUpdateDto>().ReverseMap();
             CreateMap<GenderType, Models.GenderType>().ReverseMap();
         }
     }
