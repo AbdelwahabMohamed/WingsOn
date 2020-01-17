@@ -25,11 +25,11 @@ namespace WingsOn.Api.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] PersonDto person)
+        [HttpPut]
+        public IActionResult Put([FromBody] PersonDto person)
         {
-            _peopleRepository.Save(person.ToPerson());
-            return Ok();
+            var updatedPerson = _peopleRepository.Save(person.ToPerson());
+            return Ok(updatedPerson);
         }
 
         // GET api/<controller>?gender=0|1

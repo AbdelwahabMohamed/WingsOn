@@ -24,8 +24,7 @@ namespace WingsOn.Tests
         public async Task CanPostBooking()
         {
             //arrange
-            var bookingFixture = new Fixture();
-            var newBooking = bookingFixture.Create<BookingDto>();
+            var newBooking = new Fixture().Create<BookingDto>();
             var bookingPayload = new StringContent(JsonConvert.SerializeObject(newBooking), Encoding.UTF8, "application/json");
 
             // act
